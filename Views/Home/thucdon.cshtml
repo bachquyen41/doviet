@@ -1,0 +1,135 @@
+﻿@model dov.Models.ThucDon
+@{
+    ViewBag.Title = "thucdon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+
+    <section class="section pb-0">
+
+        <div class="container">
+            <div class="row mb-7 justify-content-center" data-aos="fade">
+                <div class="col-md-7 text-center heading-wrap">
+                    <h3 data-aos="fade-up">THỰC ĐƠN</h3>
+
+                </div>
+            </div>
+            @{ Html.RenderAction("getMenu", "Menu");
+            }
+            <div class="container columns">
+
+                <div class="row container columns">
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/banhxeo.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="500" style="width:350px; height:250px">
+                        <h3>Bánh Xèo Tôm Thịt</h3>
+                        <p>50.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/about_2.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="600" style="width:350px; height:250px">
+                        <h3>Phở Bò</h3>
+                        <p>50.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/about_1.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="700" style="width:350px; height:250px">
+                        <h3>Gỏi Cuốn</h3>
+                        <p>50.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                </div>
+                <div class="row container columns">
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/tom.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="800" style="width:350px; height:250px">
+                        <h3>Gỏi Đu Đủ Tôm Thịt</h3>
+                        <p>50.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/chedx.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="900" style="width:350px; height:250px">
+                        <h3>Chè Đậu Xanh</h3>
+                        <p>20.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/rc.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1000" style="width:350px; height:250px">
+                        <h3>Rau Câu Lá Dứa</h3>
+                        <p>20.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>>
+                    </div>
+                </div>
+                <div class="row container columns">
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/raucau.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1100" style="width:350px; height:250px">
+                        <h3>Rau Câu Cafe</h3>
+                        <p>20.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/bo.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1200" style="width:350px; height:250px">
+                        <h3>Sinh Tố Bơ</h3>
+                        <p>20.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/sampo.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1300" style="width:350px; height:250px">
+                        <h3>Sinh Tố Sampoche</h3>
+                        <p>20.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                </div>
+
+                <div class="row container columns">
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/coca.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1100" style="width:350px; height:250px">
+                        <h3>Coca</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/pepsi.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1200" style="width:350px; height:250px">
+                        <h3>Pepsi</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/tratac.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1300" style="width:350px; height:250px">
+                        <h3>Trà Tắc</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                </div>
+                <div class="row container columns">
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/trachanh.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1100" style="width:350px; height:250px">
+                        <h3>Trà Chanh</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/camsa.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1200" style="width:350px; height:250px">
+                        <h3>Trà Đào Cam Sả</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="~/Content/img/trada.jpg" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="1300" style="width:350px; height:250px">
+                        <h3>Trà Đá</h3>
+                        <p>15.000 VND</p>
+                        <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+

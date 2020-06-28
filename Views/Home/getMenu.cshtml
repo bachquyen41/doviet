@@ -1,0 +1,28 @@
+﻿@model IEnumerable<dov.Models.ThucDon>
+@{
+    ViewBag.Title = "getMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+ @foreach (var i in Model)
+{
+
+
+       
+            
+            <div class="row container columns">
+                <div class="col-lg-4">
+                    <img src="~/Content/img/@i.Hinh" alt="Image" class="img-fluid about_img_1" data-aos="fade" data-aos-delay="200" style="width:350px; height:250px">
+                    <h3>@i.TenMonAn </h3>
+                    <p>@i.DonGia</p>
+                    <center><a class="nav-item cta-btn" href="#">Chọn</a></center>
+                </div>
+            </div>
+      
+
+}
+

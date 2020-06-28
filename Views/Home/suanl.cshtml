@@ -1,0 +1,125 @@
+﻿@model IEnumerable<dov.Models.NguyenLieu>
+@{
+    ViewBag.Title = "Cập nhật Nguyên Liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CẬP NHẬT NGUYÊN LIỆU</h2>
+
+@using (Html.BeginForm("suanl", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @foreach (var a in Model)
+        {
+            @Html.Hidden("idne", null, new { Value = a.MaNguyenLieu })
+            <span><b>@ViewBag.Message</b></span>
+            <br />
+            <div class="form-group">
+                <label class="control-label col-md-2">Mã Nhân Viên</label>
+                <div class="col-md-10">
+                    @Html.TextBox("MaNV", null, new { @class = "form-control", Value = a.MaNV })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên Nguyên liệu</label>
+                <div class="col-md-10">
+                    @Html.TextBox("TenNguyenLieu", null, new { @class = "form-control", Value = a.TenNguyenLieu })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Đơn vị tính</label>
+                <div class="col-md-10">
+                    @Html.TextBox("DonViTinh", null, new { @class = "form-control", Value = a.DVT })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Số Lượng</label>
+                <div class="col-md-10">
+                    @Html.TextBox("SL", null, new { @class = "form-control", Value = a.SL })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá</label>
+                <div class="col-md-10">
+                    @Html.TextBox("Gia", null, new { @class = "form-control", Value = a.Gia })
+                </div>
+            </div>
+
+
+        }
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-default" />
+            </div>
+            <h5>
+                <a class="col-md-offset-2 col-md-10" style="color:black;" href="@Url.Action("themnl", "Home")">Quay lại</a>
+            </h5>
+        </div>
+    </div>
+}
+
+
+
+
+@*<div class="form-group">
+        @html.labelfor(model => model.manv, htmlattributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @html.editorfor(model => model.manv, new { htmlattributes = new { @class = "form-control" } })
+            @html.validationmessagefor(model => model.manv, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @html.labelfor(model => model.tennguyenlieu, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div>@model.tennguyenlieu</div>
+            @html.editorfor(model => model.tennguyenlieu, new { htmlattributes = new { @class = "form-control" } })
+            @html.validationmessagefor(model => model.tennguyenlieu, "", new { @class = "text-danger" })
+        @*</div>
+    </div>
+
+    <div class="form-group">
+        @html.labelfor(model => model.sl, htmlattributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @html.editorfor(model => model.sl, new { htmlattributes = new { @class = "form-control" } })
+            @html.validationmessagefor(model => model.sl, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @html.labelfor(model => model.gia, htmlattributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @html.editorfor(model => model.gia, new { htmlattributes = new { @class = "form-control" } })
+            @html.validationmessagefor(model => model.gia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @html.labelfor(model => model.dvt, htmlattributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @html.editorfor(model => model.dvt, new { htmlattributes = new { @class = "form-control" } })
+            @html.validationmessagefor(model => model.dvt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="create" class="btn btn-default" />
+        </div>
+    </div>*@
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

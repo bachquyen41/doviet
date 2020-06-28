@@ -1,0 +1,79 @@
+﻿@model IEnumerable<dov.Models.NguyenLieu>
+
+@{
+    ViewBag.Title = "QUản Lý Nguyên Liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var money = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+<h2>NGUYÊN LIỆU</h2>
+
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<table class="table">
+    <tr>
+        @*<th>
+
+                @Html.DisplayNameFor(model => model.MaNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNguyenLieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DVT)
+            </th>*@
+        <th>Mã Nhân Viên </th>
+        <th>Tên Nguyên Liệu </th>
+        <th>Số Lượng </th>
+        <th>Giá </th>
+        <th>Đơn vị tính </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNguyenLieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DVT)
+            </td>
+            <td>
+                <a href="@Url.Action("suanl", "Home", new {@idne = item.MaNguyenLieu.ToString().Trim() })">Sửa</a> |
+                <a href="@Url.Action("xoanl", "Home", new {@idne = item.MaNguyenLieu })" onclick="return confirm('Bạn có chắc muốn xóa ?')">Xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>

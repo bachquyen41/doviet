@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLnhahang2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ban">
+    <Key>
+      <PropertyRef Name="MaBan" />
+    </Key>
+    <Property Name="MaBan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="KhuVuc" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SLnguoi" Type="Int32" />
+    <NavigationProperty Name="KhachHangs" Relationship="Self.FK__KhachHang__MaBan__32E0915F" FromRole="Ban" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="ChiTietHD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaHD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="ThanhTien" Type="Double" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHD__MaHD__29572725" FromRole="ChiTietHD" ToRole="HoaDon" />
+    <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietHD__MaTD__3C69FB99" FromRole="ChiTietHD" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="ChiTietTD">
+    <Key>
+      <PropertyRef Name="MaTD" />
+      <PropertyRef Name="MaNguyenLieu" />
+    </Key>
+    <Property Name="MaTD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaNguyenLieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SL" Type="Int32" />
+    <NavigationProperty Name="NguyenLieu" Relationship="Self.FK__ChiTietTD__MaNgu__35BCFE0A" FromRole="ChiTietTD" ToRole="NguyenLieu" />
+    <NavigationProperty Name="ThucDon" Relationship="Self.FK__ChiTietTD__MaTD__3D5E1FD2" FromRole="ChiTietTD" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="ChucVu">
+    <Key>
+      <PropertyRef Name="MaCV" />
+    </Key>
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenCV" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="MaQuyen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PhanQuyen" Relationship="Self.FK__ChucVu__MaQuyen__2D27B809" FromRole="ChucVu" ToRole="PhanQuyen" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaCV__38996AB5" FromRole="ChucVu" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="CTPN">
+    <Key>
+      <PropertyRef Name="MaNhap" />
+      <PropertyRef Name="MaNguyenLieu" />
+    </Key>
+    <Property Name="MaNhap" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaNguyenLieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SL" Type="Int32" />
+    <NavigationProperty Name="NguyenLieu" Relationship="Self.FK__CTPN__MaNguyenLi__33D4B598" FromRole="CTPN" ToRole="NguyenLieu" />
+    <NavigationProperty Name="PhieuNhap" Relationship="Self.FK__CTPN__MaNhap__2F10007B" FromRole="CTPN" ToRole="PhieuNhap" />
+  </EntityType>
+  <EntityType Name="CTPX">
+    <Key>
+      <PropertyRef Name="MaNguyenLieu" />
+      <PropertyRef Name="MaXuat" />
+    </Key>
+    <Property Name="MaNguyenLieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaXuat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SL" Type="Int32" />
+    <NavigationProperty Name="NguyenLieu" Relationship="Self.FK__CTPX__MaNguyenLi__34C8D9D1" FromRole="CTPX" ToRole="NguyenLieu" />
+    <NavigationProperty Name="PhieuXuat" Relationship="Self.FK__CTPX__MaXuat__30F848ED" FromRole="CTPX" ToRole="PhieuXuat" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+    </Key>
+    <Property Name="MaHD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgayLap" Type="DateTime" Precision="0" />
+    <Property Name="TongTien" Type="Double" />
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ChiTietHDs" Relationship="Self.FK__ChiTietHD__MaHD__29572725" FromRole="HoaDon" ToRole="ChiTietHD" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__31EC6D26" FromRole="HoaDon" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenKH" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MaBan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ban" Relationship="Self.FK__KhachHang__MaBan__32E0915F" FromRole="KhachHang" ToRole="Ban" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__31EC6D26" FromRole="KhachHang" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="NguyenLieu">
+    <Key>
+      <PropertyRef Name="MaNguyenLieu" />
+    </Key>
+    <Property Name="MaNguyenLieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenNguyenLieu" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="SL" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Gia" Type="Double" />
+    <Property Name="DVT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ChiTietTDs" Relationship="Self.FK__ChiTietTD__MaNgu__35BCFE0A" FromRole="NguyenLieu" ToRole="ChiTietTD" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MaNguyenLi__33D4B598" FromRole="NguyenLieu" ToRole="CTPN" />
+    <NavigationProperty Name="CTPXes" Relationship="Self.FK__CTPX__MaNguyenLi__34C8D9D1" FromRole="NguyenLieu" ToRole="CTPX" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK__NguyenLieu__MaNV__32E0915F" FromRole="NguyenLieu" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenNV" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="NgayVaoLam" Type="DateTime" Precision="0" />
+    <Property Name="LuongNV" Type="Double" />
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__MaCV__38996AB5" FromRole="NhanVien" ToRole="ChucVu" />
+    <NavigationProperty Name="NguyenLieux" Relationship="Self.FK__NguyenLieu__MaNV__32E0915F" FromRole="NhanVien" ToRole="NguyenLieu" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="MaQuyen" />
+    </Key>
+    <Property Name="MaQuyen" Type="Int32" Nullable="false" />
+    <Property Name="TenQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChucVus" Relationship="Self.FK__ChucVu__MaQuyen__2D27B809" FromRole="PhanQuyen" ToRole="ChucVu" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="MaNhap" />
+    </Key>
+    <Property Name="MaNhap" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MaNhap__2F10007B" FromRole="PhieuNhap" ToRole="CTPN" />
+  </EntityType>
+  <EntityType Name="PhieuXuat">
+    <Key>
+      <PropertyRef Name="MaXuat" />
+    </Key>
+    <Property Name="MaXuat" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgayXuat" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CTPXes" Relationship="Self.FK__CTPX__MaXuat__30F848ED" FromRole="PhieuXuat" ToRole="CTPX" />
+  </EntityType>
+  <EntityType Name="ThucDon">
+    <Key>
+      <PropertyRef Name="MaTD" />
+    </Key>
+    <Property Name="MaTD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenLoaiMonAn" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="TenMonAn" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Double" Nullable="false" />
+    <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietHDs" Relationship="Self.FK__ChiTietHD__MaTD__3C69FB99" FromRole="ThucDon" ToRole="ChiTietHD" />
+    <NavigationProperty Name="ChiTietTDs" Relationship="Self.FK__ChiTietTD__MaTD__3D5E1FD2" FromRole="ThucDon" ToRole="ChiTietTD" />
+  </EntityType>
+  <Association Name="FK__KhachHang__MaBan__32E0915F">
+    <End Role="Ban" Type="Self.Ban" Multiplicity="1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ban">
+        <PropertyRef Name="MaBan" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="MaBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHD__MaHD__29572725">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTietHD" Type="Self.ChiTietHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHD" />
+      </Principal>
+      <Dependent Role="ChiTietHD">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHD__MaTD__3C69FB99">
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
+    <End Role="ChiTietHD" Type="Self.ChiTietHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucDon">
+        <PropertyRef Name="MaTD" />
+      </Principal>
+      <Dependent Role="ChiTietHD">
+        <PropertyRef Name="MaTD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietTD__MaNgu__35BCFE0A">
+    <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="1" />
+    <End Role="ChiTietTD" Type="Self.ChiTietTD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguyenLieu">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Principal>
+      <Dependent Role="ChiTietTD">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietTD__MaTD__3D5E1FD2">
+    <End Role="ThucDon" Type="Self.ThucDon" Multiplicity="1" />
+    <End Role="ChiTietTD" Type="Self.ChiTietTD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucDon">
+        <PropertyRef Name="MaTD" />
+      </Principal>
+      <Dependent Role="ChiTietTD">
+        <PropertyRef Name="MaTD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChucVu__MaQuyen__2D27B809">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="1" />
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="MaQuyen" />
+      </Principal>
+      <Dependent Role="ChucVu">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NhanVien__MaCV__38996AB5">
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="MaCV" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPN__MaNguyenLi__33D4B598">
+    <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguyenLieu">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPN__MaNhap__2F10007B">
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhap">
+        <PropertyRef Name="MaNhap" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MaNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPX__MaNguyenLi__34C8D9D1">
+    <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="1" />
+    <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguyenLieu">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="MaNguyenLieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPX__MaXuat__30F848ED">
+    <End Role="PhieuXuat" Type="Self.PhieuXuat" Multiplicity="1" />
+    <End Role="CTPX" Type="Self.CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuXuat">
+        <PropertyRef Name="MaXuat" />
+      </Principal>
+      <Dependent Role="CTPX">
+        <PropertyRef Name="MaXuat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__MaKH__31EC6D26">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguyenLieu__MaNV__32E0915F">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="NguyenLieu">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLnhahang2Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bans" EntityType="Self.Ban" />
+    <EntitySet Name="ChiTietHDs" EntityType="Self.ChiTietHD" />
+    <EntitySet Name="ChiTietTDs" EntityType="Self.ChiTietTD" />
+    <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+    <EntitySet Name="CTPNs" EntityType="Self.CTPN" />
+    <EntitySet Name="CTPXes" EntityType="Self.CTPX" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="NguyenLieux" EntityType="Self.NguyenLieu" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+    <EntitySet Name="PhieuNhaps" EntityType="Self.PhieuNhap" />
+    <EntitySet Name="PhieuXuats" EntityType="Self.PhieuXuat" />
+    <EntitySet Name="ThucDons" EntityType="Self.ThucDon" />
+    <AssociationSet Name="FK__KhachHang__MaBan__32E0915F" Association="Self.FK__KhachHang__MaBan__32E0915F">
+      <End Role="Ban" EntitySet="Bans" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHD__MaHD__29572725" Association="Self.FK__ChiTietHD__MaHD__29572725">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHD__MaTD__3C69FB99" Association="Self.FK__ChiTietHD__MaTD__3C69FB99">
+      <End Role="ThucDon" EntitySet="ThucDons" />
+      <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietTD__MaNgu__35BCFE0A" Association="Self.FK__ChiTietTD__MaNgu__35BCFE0A">
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+      <End Role="ChiTietTD" EntitySet="ChiTietTDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietTD__MaTD__3D5E1FD2" Association="Self.FK__ChiTietTD__MaTD__3D5E1FD2">
+      <End Role="ThucDon" EntitySet="ThucDons" />
+      <End Role="ChiTietTD" EntitySet="ChiTietTDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChucVu__MaQuyen__2D27B809" Association="Self.FK__ChucVu__MaQuyen__2D27B809">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="ChucVu" EntitySet="ChucVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NhanVien__MaCV__38996AB5" Association="Self.FK__NhanVien__MaCV__38996AB5">
+      <End Role="ChucVu" EntitySet="ChucVus" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPN__MaNguyenLi__33D4B598" Association="Self.FK__CTPN__MaNguyenLi__33D4B598">
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPN__MaNhap__2F10007B" Association="Self.FK__CTPN__MaNhap__2F10007B">
+      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPX__MaNguyenLi__34C8D9D1" Association="Self.FK__CTPX__MaNguyenLi__34C8D9D1">
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPX__MaXuat__30F848ED" Association="Self.FK__CTPX__MaXuat__30F848ED">
+      <End Role="PhieuXuat" EntitySet="PhieuXuats" />
+      <End Role="CTPX" EntitySet="CTPXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__MaKH__31EC6D26" Association="Self.FK__HoaDon__MaKH__31EC6D26">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguyenLieu__MaNV__32E0915F" Association="Self.FK__NguyenLieu__MaNV__32E0915F">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

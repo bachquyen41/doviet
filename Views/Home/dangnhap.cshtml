@@ -1,0 +1,82 @@
+﻿@model dov.Models.NhanVien
+@{
+    ViewBag.Title = "dangnhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+
+<section class="section  pt-5 top-slant-white2 relative-higher bottom-slant-gray">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                @using (Html.BeginForm("dangnhap", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <p><span style="color:red">@ViewData["Err"]</span></p>
+                        <label for="name">Tên Đăng Nhập</label>
+                        <p><span style="color:red">@Html.ValidationMessageFor(Model => Model.TenTK)</span></p>
+                        @Html.TextBox("TenTK", null, new { @class = "form-control", type = "text" })
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label for="pass">Mật Khẩu</label>
+                        <p><span style="color:red">@Html.ValidationMessageFor(Model => Model.MatKhau)</span></p>
+                        @Html.TextBox("MatKhau", null, new { @class = "form-control", type = "password" })
+                    </div>
+                    
+                </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" value="ĐĂNG NHẬP" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <a href="#">Quên mật khẩu ?</a>
+                }
+
+
+            </div>
+
+            <div class="col-lg-6 pl-2 pl-lg-5">
+
+                <div class="col-md-8 mx-auto contact-form-contact-info">
+                    <h4 class="mb-5">Thông tin liên lạc</h4>
+                    <p class="d-flex">
+                        <span class="ion-ios-location icon mr-5"></span>
+                        <span>475A Điện Biên Phủ, Phường 25, Quận Bình Thạnh, Tp.HCM</span>
+                    </p>
+
+                    <p class="d-flex">
+                        <span class="ion-ios-telephone icon mr-5"></span>
+                        <span>028 3512 0791</span>
+                    </p>
+
+                    <p class="d-flex">
+                        <span class="ion-android-mail icon mr-5"></span>
+                        <span>nqs123@gmail.com</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
